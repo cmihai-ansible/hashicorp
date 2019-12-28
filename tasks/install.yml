@@ -1,0 +1,44 @@
+---
+# install archive to /usr/local/bin
+
+- name: check if binary already installed
+  command: "{{ hashicorp_dir }}/{{ item.name }} --version"
+  changed_when: false
+  ignore_errors: true
+  register: version_output
+
+- name: install if binary not present
+  block:
+    - name: unpacking tools preset
+      package:
+        name: unzip
+        state: present
+      become: true
+
+    - name: create temporary file
+      tempfile:
+        state: file
+        suffix: temp
+      register: tmp_archive
+
+    - name: download archive
+      get_url:
+        url: "{{ hashicorp_base_url }}/{{ item.name }}/{{ item.version }}
+              /{{ item.name }}_{{ item.version }}_{{ item.platform }}.zip"
+        dest: "{{ tmp_archive }}"
+        checksum: "{{ item.checksum | default(omit) }}"
+
+    - name: unarchive
+      unarchive:
+        src: "{{ tmp_archive }}"
+        dest: "{{ hashicorp_dir }}"
+        extra_opts:
+          - --strip=1
+        remote_src: true
+      become: true
+
+    - name: delete temp file
+      file:
+        path: "{{ tmp_archive }}"
+        state: absent
+  when: "( version_output is failed ) or ( {{ item.release }} not in hashicorp_version_output.stdout )"
