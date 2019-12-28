@@ -41,4 +41,4 @@
       file:
         path: "{{ tmp_archive }}"
         state: absent
-  when: "( version_output is failed ) or ( {{ item.release }} not in hashicorp_version_output.stdout )"
+  when: "( version_output is failed ) or ( {{ item.version }} not in hashicorp_version_output.stdout )"
