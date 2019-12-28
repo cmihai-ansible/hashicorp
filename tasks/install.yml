@@ -5,7 +5,7 @@
   command: "{{ hashicorp_dir }}/{{ item.name }} --version"
   changed_when: false
   ignore_errors: true
-  register: version_output
+  register: hashicorp_version_output
 
 - name: install if binary not present
   block:
@@ -28,4 +28,10 @@
         dest: "{{ hashicorp_dir }}"
         remote_src: true
       become: true
-  when: "( version_output is failed ) or ( item.version not in hashicorp_version_output.stdout )"
+
+    - name: delete temp file
+      file:
+        path: "/tmp/{{ item.name }}.zip"
+        state: absent
+  when: "( hashicorp_version_output is failed )
+    or ({{ item.version }} not in hashicorp_version_output.stdout )"

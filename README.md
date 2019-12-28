@@ -22,13 +22,28 @@ Requirements
 Role Variables
 --------------
 
-```
-hashicorp_remove_packages: true
-hashicorp_enable_service: true
-hashicorp_enable_selinux: true
-hashicorp_firewall_configure: true
-hashicorp_firewall_rules:
-  - service:
+```yaml
+hashicorp_base_url: "https://releases.hashicorp.com"
+hashicorp_dir: "/usr/local/bin"
+hashicorp_tools:
+  - name: terraform
+    version: "0.12.18"
+    platform: linux_amd64
+  - name: vault
+    version: "1.3.0"
+    platform: linux_amd64
+  - name: consul
+    version: "1.6.2"
+    platform: linux_amd64
+  - name: noman
+    version: "0.10.2"
+    platform: linux_amd64
+  - name: vagrant
+    version: "2.2.6"
+    platform: linux_amd64
+  - name: packer
+    version: "1.5.1"
+    platform: linux_amd64
 ```
 
 Dependencies
@@ -51,11 +66,27 @@ Example Playbook
       import_role:
         name: crivetimihai.hashicorp
       vars:
-        hashicorp_remove_packages: true
-        hashicorp_enable_service: true
-        hashicorp_firewall_configure: true
-        hashicorp_firewall_rules:
-          - service:
+        hashicorp_base_url: "https://releases.hashicorp.com"
+        hashicorp_dir: "/usr/local/bin"
+        hashicorp_tools:
+          - name: terraform
+            version: "0.12.18"
+            platform: linux_amd64
+          - name: vault
+            version: "1.3.0"
+            platform: linux_amd64
+          - name: consul
+            version: "1.6.2"
+            platform: linux_amd64
+          - name: noman
+            version: "0.10.2"
+            platform: linux_amd64
+          - name: vagrant
+            version: "2.2.6"
+            platform: linux_amd64
+          - name: packer
+            version: "1.5.1"
+            platform: linux_amd64
       tags: hashicorp
 ```
 
