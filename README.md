@@ -99,3 +99,8 @@ Author Information
 ------------------
 
 - [Mihai Criveti](https://www.linkedin.com/in/crivetimihai/)
+
+TODO
+----
+
+1. Projects require fuse, see: dlopen(): error loading libfuse.so.2
