@@ -7,14 +7,14 @@
   ignore_errors: true
   register: hashicorp_version_output
 
+- name: unpacking tools preset
+  package:
+    name: unzip
+    state: present
+  become: true
+
 - name: install if binary not present
   block:
-    - name: unpacking tools preset
-      package:
-        name: unzip
-        state: present
-      become: true
-
     - name: download archive
       get_url:
         url: "{{ hashicorp_base_url }}/{{ item.name }}/{{ item.version }}/\
