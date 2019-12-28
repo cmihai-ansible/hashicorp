@@ -35,7 +35,7 @@ hashicorp_tools:
   - name: consul
     version: "1.6.2"
     platform: linux_amd64
-  - name: noman
+  - name: nomad
     version: "0.10.2"
     platform: linux_amd64
   - name: vagrant
@@ -78,7 +78,7 @@ Example Playbook
           - name: consul
             version: "1.6.2"
             platform: linux_amd64
-          - name: noman
+          - name: nomad
             version: "0.10.2"
             platform: linux_amd64
           - name: vagrant
