@@ -25,4 +25,5 @@
   tags: vars
 
 - include: install.yml
-  loop: "{{ hashicorp_tools }}"
+- include: libvirt.yml
+  when: hashicorp_install_vagrant_libvirt_plugin

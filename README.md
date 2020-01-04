@@ -1,7 +1,9 @@
 Role Name
 =========
 
-hashicorp
+hashicorp: installs OS packages (ex: vagrant RPM / deb).
+
+For binary / archive installer - see localbin role.
 
 [![Build Status](https://travis-ci.org/cmihai-ansible/hashicorp.svg?branch=master)](https://travis-ci.org/cmihai-ansible/hashicorp)
 
@@ -23,27 +25,7 @@ Role Variables
 --------------
 
 ```yaml
-hashicorp_base_url: "https://releases.hashicorp.com"
-hashicorp_dir: "/usr/local/bin"
-hashicorp_tools:
-  - name: terraform
-    version: "0.12.18"
-    platform: linux_amd64
-  - name: vault
-    version: "1.3.0"
-    platform: linux_amd64
-  - name: consul
-    version: "1.6.2"
-    platform: linux_amd64
-  - name: nomad
-    version: "0.10.2"
-    platform: linux_amd64
-  - name: vagrant
-    version: "2.2.6"
-    platform: linux_amd64
-  - name: packer
-    version: "1.5.1"
-    platform: linux_amd64
+hashicorp_vagrant_version: "2.2.6"
 ```
 
 Dependencies
@@ -66,27 +48,7 @@ Example Playbook
       import_role:
         name: crivetimihai.hashicorp
       vars:
-        hashicorp_base_url: "https://releases.hashicorp.com"
-        hashicorp_dir: "/usr/local/bin"
-        hashicorp_tools:
-          - name: terraform
-            version: "0.12.18"
-            platform: linux_amd64
-          - name: vault
-            version: "1.3.0"
-            platform: linux_amd64
-          - name: consul
-            version: "1.6.2"
-            platform: linux_amd64
-          - name: nomad
-            version: "0.10.2"
-            platform: linux_amd64
-          - name: vagrant
-            version: "2.2.6"
-            platform: linux_amd64
-          - name: packer
-            version: "1.5.1"
-            platform: linux_amd64
+        hashicorp_vagrant_version: "2.2.6"
       tags: hashicorp
 ```
 
@@ -99,8 +61,3 @@ Author Information
 ------------------
 
 - [Mihai Criveti](https://www.linkedin.com/in/crivetimihai/)
-
-TODO
-----
-
-1. Projects require fuse, see: dlopen(): error loading libfuse.so.2

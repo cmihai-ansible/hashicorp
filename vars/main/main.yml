@@ -1,0 +1,13 @@
+---
+# vars file for packages
+
+# Detected OS
+my_os: "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}"
+
+# Packages lists
+hashicorp_packages_install: "{{ _hashicorp_packages_install['all']
+  | union ( _hashicorp_packages_install[my_os]
+  | default([]) ) }}"
+hashicorp_packages_libvirt: "{{ _hashicorp_packages_libvirt['all']
+  | union ( _hashicorp_packages_libvirt[my_os]
+  | default([]) ) }}"

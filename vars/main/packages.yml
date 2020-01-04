@@ -1,0 +1,64 @@
+---
+# Install packages
+_hashicorp_packages_install:
+  all: []
+  CentOS_7:
+    - "https://releases.hashicorp.com/vagrant/\
+      {{ hashicorp_vagrant_version}}/vagrant_{{ hashicorp_vagrant_version }}_x86_64.rpm"
+  RedHat_7:
+    - "https://releases.hashicorp.com/vagrant/\
+      {{ hashicorp_vagrant_version}}/vagrant_{{ hashicorp_vagrant_version }}_x86_64.rpm"
+  CentOS_8:
+    - "https://releases.hashicorp.com/vagrant/\
+      {{ hashicorp_vagrant_version}}/vagrant_{{ hashicorp_vagrant_version }}_x86_64.rpm"
+  RedHat_8:
+    - "https://releases.hashicorp.com/vagrant/\
+      {{ hashicorp_vagrant_version}}/vagrant_{{ hashicorp_vagrant_version }}_x86_64.rpm"
+  Fedora_31:
+    - "https://releases.hashicorp.com/vagrant/\
+      {{ hashicorp_vagrant_version}}/vagrant_{{ hashicorp_vagrant_version }}_x86_64.rpm"
+  Debian_10:
+    - "https://releases.hashicorp.com/vagrant/\
+      {{ hashicorp_vagrant_version}}/vagrant_{{ hashicorp_vagrant_version }}_x86_64.rpm"
+  Ubuntu_18:
+    - "https://releases.hashicorp.com/vagrant/\
+      {{ hashicorp_vagrant_version}}/vagrant_{{ hashicorp_vagrant_version }}_x86_64.rpm"
+
+# Install packages required to build the vagrant libvirt plugin
+_hashicorp_packages_libvirt:
+  all: []
+  CentOS_7:
+    - libvirt-devel
+    - ruby-devel
+    - gcc
+    - make
+  RedHat_7:
+    - libvirt-devel
+    - ruby-devel
+    - gcc
+    - make
+  CentOS_8:
+    - libvirt-devel
+    - ruby-devel
+    - gcc
+    - make
+  RedHat_8:
+    - libvirt-devel
+    - ruby-devel
+    - gcc
+    - make
+  Fedora_31:
+    - libvirt-devel
+    - ruby-devel
+    - gcc
+    - make
+  Debian_10:
+    - libvirt-devel
+    - ruby-devel
+    - gcc
+    - make
+  Ubuntu_18:
+    - libvirt-devel
+    - ruby-devel
+    - gcc
+    - make

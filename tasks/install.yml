@@ -1,33 +1,8 @@
 ---
-# install archive to /usr/local/bin
+# Install hashicorp packages
 
-- name: check if binary already installed
-  command: "{{ hashicorp_dir }}/{{ item.name }} --version"
-  changed_when: false
-  ignore_errors: true
-  register: hashicorp_version_output
-
-- name: unpacking tools preset
+- name: packages are installed
   package:
-    name: unzip
+    name: "{{ hashicorp_packages_install }}"
     state: present
   become: true
-
-- name: install if binary not present
-  block:
-    - name: download archive
-      get_url:
-        url: "{{ hashicorp_base_url }}/{{ item.name }}/{{ item.version }}/\
-          {{ item.name }}_{{ item.version }}_{{ item.platform }}.zip"
-        dest: "/tmp/{{ item.name }}.zip"
-        checksum: "{{ item.checksum | default(omit) }}"
-
-    - name: unarchive
-      unarchive:
-        src: "/tmp/{{ item.name }}.zip"
-        dest: "{{ hashicorp_dir }}"
-        remote_src: true
-      become: true
-
-  when: "( hashicorp_version_output is failed )
-    or ( item.version not in hashicorp_version_output.stdout )"

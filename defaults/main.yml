@@ -1,30 +1,5 @@
 ---
 # defaults file for hashicorp
 
-hashicorp_base_url: "https://releases.hashicorp.com"
-hashicorp_dir: "/usr/local/bin"
-hashicorp_tools:
-  - name: terraform
-    version: "0.12.18"
-    platform: linux_amd64
-    checksum: "sha256:e7ebe3ca988768bffe0c239d107645bd53515354cff6cbe5651718195a151700"
-  - name: vault
-    version: "1.3.0"
-    platform: linux_amd64
-    checksum: "sha256:d89b8a317831b06f2a32c56cb86071d058b09d9317b416bb509ce3d01e912eb3"
-  - name: consul
-    version: "1.6.2"
-    platform: linux_amd64
-    checksum: "sha256:78d127e5b8edd310c3f9f89487fb833a5c7bcb4e09cb731a4d39100fc53b38be"
-  - name: nomad
-    version: "0.10.2"
-    platform: linux_amd64
-    checksum: "sha256:cab179b0245e07ed39f4bcaa543e88d32fadf8660c2230733ce836873fe2714d"
-  - name: vagrant
-    version: "2.2.6"
-    platform: linux_amd64
-    checksum: "sha256:a08c7765baae1ee88b3bc0bace718087a84e2023d1f2ecc134aa735b89515a03"
-  - name: packer
-    version: "1.5.1"
-    platform: linux_amd64
-    checksum: "sha256:3305ede8886bc3fd83ec0640fb87418cc2a702b2cb1567b48c8cb9315e80047d"
+hashicorp_vagrant_version: "2.2.6"
+hashicorp_install_vagrant_libvirt_plugin: true

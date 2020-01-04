@@ -15,12 +15,22 @@ platforms:
     image: "${CONTAINER_DISTRO:-centos}:${CONTAINER_VERSION:-7}"
     registry:
       url: "${CONTAINER_REGISTRY:-docker.io}"
+    override_command: false
     dockerfile: ../resources/Dockerfile.j2
     privileged: true
-    pre_build_image: true
-    volume_mounts:
+    capabilities:
+      - SYS_ADMIN
+    security_opts:
+      - seccomp=unconfined
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+    pre_build_image: true
     command: ${CONTAINER_COMMAND:-"/sbin/init"}
+    tty: true
+    pid_mode: host
     environment:
       container: podman
 provisioner:
