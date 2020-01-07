@@ -18,4 +18,4 @@
     executable: /bin/sh
     creates: "~/.vagrant.d/plugins.json"
   tags: hashicorp_vagrant_libvirt
-  become: true
+  become: false
