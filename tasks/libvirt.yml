@@ -6,7 +6,7 @@
     state: present
   become: true
 
-- name: vagrant libvirt is installed # noqa 305
+- name: vagrant libvirt is installed      # noqa 305
   shell: /opt/vagrant/bin/vagrant plugin install vagrant-libvirt
   environment:
     CONFIGURE_ARGS: "with-ldflags=-L/opt/vagrant/embedded/lib \
